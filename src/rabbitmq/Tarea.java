@@ -16,14 +16,15 @@ public class Tarea {
              Channel channel = connection.createChannel()) {
             channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
 
-            String message = String.join(" ", "hola a todos como estan");
-
+            int numeroTarea = 3;
             for (int i = 0; i < 4; i++) {
+                String message =  "Tarea "+numeroTarea+"--- Subtarea "+ (i + 1);
+
                 channel.basicPublish("", TASK_QUEUE_NAME,
                         MessageProperties.PERSISTENT_TEXT_PLAIN,
                         message.getBytes("UTF-8"));
             }
-            System.out.println(" [x] Enviando '" + message + "'");
+            System.out.println(" [x] Mensaje enviado!");
         }
     }
 

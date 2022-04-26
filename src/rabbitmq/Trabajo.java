@@ -17,6 +17,7 @@ public class Trabajo {
 
         channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
         System.out.println(" [*] Esperando por mensajes. Para terminar presione CTRL+C");
+        System.out.println(System.lineSeparator());
 
         channel.basicQos(1);
 
@@ -39,7 +40,7 @@ public class Trabajo {
     private static void trabajar(String task) {
         try {
             System.out.println(" [x] procesando tarea ...");
-            Thread.sleep(10000);
+            Thread.sleep(1500);
         } catch (InterruptedException _ignored) {
             Thread.currentThread().interrupt();
         }
